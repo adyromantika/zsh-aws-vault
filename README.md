@@ -56,6 +56,21 @@ Produces this segment in my prompt:
 
 ![screenshot of agnoster theme with aws-vault segment](https://i.imgur.com/BLE0QXg.png)
 
+### Prompt Segment for [Powerlevel9k theme](https://github.com/bhilburn/powerlevel9k)
+
+Add these to `~/.zshrc`
+```bash
+prompt_aws_vault() {
+  local vault_segment
+  vault_segment="`prompt_aws_vault_segment`"
+  [[ $vault_segment != '' ]] && $1_prompt_segment aws-vault 0 yellow black "$vault_segment"
+}
+
+POWERLEVEL9K_AWS_VAULT="prompt_aws_vault"
+```
+
+Then add `aws_vault` to either `POWERLEVEL9K_LEFT_PROMPT_ELEMENTS` or `POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS`.
+
 #### Prompt Customization
 You can customize the prompt segment behavior by overriding these variables:
 
